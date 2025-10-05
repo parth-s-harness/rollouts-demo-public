@@ -17,6 +17,7 @@ spec:
               containers:
               - name: load-tester
                 image: my-load-tester:latest 
+                imagePullPolicy: IfNotPresent
                 command: [sh, -xec]
                 args:
                 - |
