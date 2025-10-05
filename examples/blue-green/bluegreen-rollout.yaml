@@ -32,3 +32,9 @@ spec:
       autoPromotionEnabled: false
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
+      prePromotionAnalysis:
+        templates:
+        - templateName: http-benchmark
+        args:
+        - name: host
+          value: bluegreen-demo-preview
