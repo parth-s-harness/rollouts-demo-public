@@ -16,7 +16,7 @@ spec:
             spec:
               containers:
               - name: load-tester
-                image: argoproj/load-tester:latest
+                image: my-load-tester:latest 
                 command: [sh, -xec]
                 args:
                 - |
