@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
 - ../base
-- rollout-with-analysis.yaml
-- analysis-http-benchmark.yaml
+- ../canary/canary-analysis-background.yaml
+- ../analysis-templates/analysis-http-benchmark-bg.yaml
