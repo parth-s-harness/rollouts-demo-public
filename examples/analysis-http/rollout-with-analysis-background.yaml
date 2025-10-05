@@ -43,11 +43,5 @@ spec:
       - setWeight: 30
       - pause: {}
       - setWeight: 40
-      - analysis:
-          templates:
-          - templateName: http-benchmark
-          args:
-          - name: host
-            value: canary-demo-preview
       - pause:
-          duration: 30
+          duration: 20
