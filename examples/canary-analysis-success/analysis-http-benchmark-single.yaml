@@ -7,8 +7,6 @@ spec:
   - name: host
   metrics:
   - name: http-benchmark
-    failureLimit: 1
-    interval: 5s
     provider:
       job:
         spec:
