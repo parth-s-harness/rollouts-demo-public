@@ -28,3 +28,4 @@ spec:
             memory: 32Mi
             cpu: 5m
   strategy:
+    blueGreen: 
