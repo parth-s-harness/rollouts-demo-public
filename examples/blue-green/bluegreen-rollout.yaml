@@ -27,14 +27,3 @@ spec:
           requests:
             memory: 32Mi
             cpu: 5m
-  strategy:
-    blueGreen:
-      autoPromotionEnabled: false
-      activeService: bluegreen-demo
-      previewService: bluegreen-demo-preview
-      prePromotionAnalysis:
-        templates:
-        - templateName: http-benchmark
-        args:
-        - name: host
-          value: bluegreen-demo-preview
