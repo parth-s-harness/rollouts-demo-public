@@ -36,12 +36,12 @@ spec:
           value: canary-demo-preview
       steps:
       - setWeight: 10
-      # - pause: {}
+      - pause: {}
       - setWeight: 20
       - pause:
           duration: 20
       - setWeight: 30
-      # - pause: {}
+      - pause: {}
       - setWeight: 40
       - analysis:
           templates:
