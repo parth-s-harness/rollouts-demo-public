@@ -5,3 +5,17 @@ resources:
 - ../base
 - canary-analysis-step-success.yaml
 - analysis-http-benchmark-single.yaml
+# Blue-Green Rollout
+- bluegreen-rollout.yaml
+- bluegreen-service.yaml
+- bluegreen-preview-service.yaml
+- bluegreen-ingress.yaml
+- bluegreen-preview-ingress.yaml
+# Canary Staging Rollout (in staging namespace)
+- namespace-staging.yaml
+- canary-staging-rollout.yaml
+- canary-staging-service.yaml
+- canary-staging-preview-service.yaml
+- canary-staging-ingress.yaml
+- canary-staging-preview-ingress.yaml
+- analysis-http-benchmark-staging.yaml
