@@ -10,7 +10,7 @@ spec:
     targetRevision: master
     kustomize:
       images:
-        - my-load-tester:latest
+        - argoproj/load-tester:latest
         - argoproj/rollouts-demo:green
   destination:
     server: https://kubernetes.default.svc
