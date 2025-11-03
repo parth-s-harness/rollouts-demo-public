@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: canary-analysis-success
+  namespace: argocd
+spec:
+  source:
+    repoURL: https://github.com/parth-s-harness/rollouts-demo
+    path: examples/canary-analysis-success
+    targetRevision: master
+    kustomize:
+      images:
+        - my-load-tester:latest
+        - argoproj/rollouts-demo:green
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ns-canary-analysis-success
+  project: default
+  syncPolicy:
+    syncOptions:
+      - PrunePropagationPolicy=foreground
+      - CreateNamespace=true
+      - Validate=true
+      - PruneLast=false
+      - ApplyOutOfSyncOnly=false
+      - FluxSubsystem=false
+      - AutoCreateFluxResources=false
+      - Replace=true
+      - retry=false
+      - preserveResourcesOnDeletion=false
