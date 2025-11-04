@@ -31,12 +31,12 @@ spec:
       canaryService: canary-staging-preview
       steps:
       - setWeight: 20
-      - pause: {}
+      #- pause: {}
       - setWeight: 40
       - pause:
           duration: 20
       - setWeight: 60
-      - pause: {}
+      #- pause: {}
       - setWeight: 80
       - analysis:
           templates:
