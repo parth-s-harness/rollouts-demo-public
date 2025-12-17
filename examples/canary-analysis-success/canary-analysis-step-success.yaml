@@ -30,12 +30,12 @@ spec:
       canaryService: canary-demo-preview
       steps:
       - setWeight: 10
-      - pause: {}
+      # - pause: {}
       - setWeight: 20
-      - pause:
-          duration: 20
+      # - pause:
+          # duration: 20
       - setWeight: 30
-      - pause: {}
+      # - pause: {}
       - setWeight: 40
       - analysis:
           templates:
@@ -43,5 +43,5 @@ spec:
           args:
           - name: host
             value: canary-demo-preview
-      - pause:
-          duration: 30
+      # - pause:
+        #   duration: 30
