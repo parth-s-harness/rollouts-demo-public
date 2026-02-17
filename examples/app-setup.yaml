@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: plugin-test
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stable-svc
+  namespace: plugin-test
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: plugin-test-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-svc
+  namespace: plugin-test
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: plugin-test-app
+---
+# This is the resource the plugin will modify
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: my-route
+  namespace: plugin-test
+spec:
+  parentRefs:
+  - name: my-gateway # Doesn't need to exist for the plugin to try editing this route
+  rules:
+  - backendRefs:
+    - name: stable-svc
+      port: 80
+      weight: 100
+    - name: canary-svc
+      port: 80
+      weight: 0
