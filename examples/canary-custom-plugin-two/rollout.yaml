@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: multi-plugin-rollout
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multi-plugin-app
+  template:
+    metadata:
+      labels:
+        app: multi-plugin-app
+    spec:
+      containers:
+      - name: app
+        image: argoproj/rollouts-demo:blue
+        ports:
+        - containerPort: 8080
+  strategy:
+    canary:
+      stableService: multi-stable
+      canaryService: multi-canary
+      trafficRouting:
+        plugins:
+          # Plugin 1: The Gateway API one (Real/Working)
+          argoproj-labs/gatewayAPI:
+            httpRoute: my-route-1
+            namespace: default
+          
+          # Plugin 2: A Dummy Plugin (To test parsing of 2+ items)
+          # Note: This will cause the Rollout to be "Degraded" if the binary isn't found,
+          # but your GetRolloutStatus code should still successfully READ this config.
+          custom/second-plugin:
+            someConfig: "test-value"
+            otherConfig: 123
+      steps:
+      - setWeight: 20
+      - pause: {duration: 10s}
