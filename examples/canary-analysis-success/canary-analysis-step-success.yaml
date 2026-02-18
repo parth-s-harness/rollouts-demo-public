@@ -4,7 +4,7 @@ metadata:
   name: canary-demo
 spec:
   replicas: 2
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: canary-demo
@@ -27,7 +27,9 @@ spec:
             memory: 32Mi
   strategy:
     canary:
+      stableService: canary-demo
       canaryService: canary-demo-preview
+      scaleDownDelaySeconds: 600
       steps:
       - setWeight: 10
       - pause: {}
