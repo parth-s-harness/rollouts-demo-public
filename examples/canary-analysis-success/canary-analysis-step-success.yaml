@@ -29,7 +29,6 @@ spec:
     canary:
       stableService: canary-demo
       canaryService: canary-demo-preview
-      scaleDownDelaySeconds: 600
       steps:
       - setWeight: 10
       - pause: {}
