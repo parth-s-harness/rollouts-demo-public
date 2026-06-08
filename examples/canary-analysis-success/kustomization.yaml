@@ -9,5 +9,3 @@ resources:
 - bluegreen-rollout.yaml
 - bluegreen-service.yaml
 - bluegreen-preview-service.yaml
-- bluegreen-ingress.yaml
-- bluegreen-preview-ingress.yaml
